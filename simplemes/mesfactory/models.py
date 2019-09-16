@@ -16,6 +16,7 @@ class FactoryCommon(CommonField, RowTracking):
 class Factory(FactoryCommon):
     class Meta:
         db_table = 'factory'
+        verbose_name_plural = "Factories"
 
 
 class Workshop(FactoryCommon):

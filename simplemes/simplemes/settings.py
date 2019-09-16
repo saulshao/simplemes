@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -81,7 +80,7 @@ DATABASES = {
         'NAME': 'simplemesdb',
         'USER': 'simplemes',
         'PASSWORD': 'v@V5FzFJ9DR4@6v',
-        'HOST': '172.17.174.173',
+        'HOST': '192.168.1.2',
         'PORT': '5432',
     },
     'backup': {

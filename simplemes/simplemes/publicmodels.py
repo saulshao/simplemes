@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class CommonField(models.Model):
@@ -16,7 +17,10 @@ class CommonField(models.Model):
         default='None',
         blank=False,
         help_text='Name, most characters are allowed')
-    description = models.CharField(max_length=512)
+    description = models.TextField(
+        max_length=512,
+        default='None',
+        help_text='Use short sentence to discribe your object')
 
     class Meta:
         abstract = True
@@ -28,12 +32,12 @@ class RowTracking(models.Model):
     '''
     created_by = models.CharField(
         max_length=50,
-        default='INIT',
+        default=settings.AUTH_USER_MODEL,
         editable=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_by = models.CharField(
         max_length=50,
-        default='INIT',
+        default=settings.AUTH_USER_MODEL,
         editable=False)
     updated_on = models.DateTimeField(auto_now=True)
 

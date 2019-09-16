@@ -46,4 +46,3 @@ class Station(FactoryCommon):
 
     class Meta:
         db_table = 'station'
-

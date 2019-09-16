@@ -21,8 +21,8 @@ class Factory(FactoryCommon):
 class Workshop(FactoryCommon):
     factory = models.ForeignKey(
         'Factory',
-        on_delete=models.PROTECT,
-        db_constraint=False
+        on_delete=models.PROTECT #,
+        #db_constraint=False
     )
 
     class Meta:
@@ -32,8 +32,8 @@ class Workshop(FactoryCommon):
 class Line(FactoryCommon):
     workshop = models.ForeignKey(
         'Workshop',
-        on_delete=models.PROTECT,
-        db_constraint=False
+        on_delete=models.PROTECT #,
+        #db_constraint=False
     )
 
     class Meta:
@@ -43,8 +43,8 @@ class Line(FactoryCommon):
 class Station(FactoryCommon):
     line = models.ForeignKey(
         'Line',
-        on_delete=models.PROTECT,
-        db_constraint=False
+        on_delete=models.PROTECT #,
+        #db_constraint=False
     )
 
     class Meta:

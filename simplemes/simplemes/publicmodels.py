@@ -22,6 +22,9 @@ class CommonField(models.Model):
         default='None',
         help_text='Use short sentence to discribe your object')
 
+    def __str__(self):
+        return self.code
+
     class Meta:
         abstract = True
 

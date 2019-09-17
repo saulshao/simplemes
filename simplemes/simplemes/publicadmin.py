@@ -2,6 +2,10 @@ from django.contrib import admin
 
 
 class MesObjAdmin(admin.ModelAdmin):
+    '''
+        Admin view for most entity model
+    '''
+    #Default columns in list
     list_display = (
         'code',
         'name',
@@ -12,6 +16,7 @@ class MesObjAdmin(admin.ModelAdmin):
         'updated_on'
         )
 
+    #assign values automatically according the user
     def save_model(self, request, obj, form, change):
         if request.user.is_authenticated:
             if not obj.pk:

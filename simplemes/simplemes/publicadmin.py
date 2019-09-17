@@ -18,6 +18,7 @@ class MesObjAdmin(admin.ModelAdmin):
                 obj.created_by = request.user.username
             obj.updated_by = request.user.username
         else:
-            obj.created_by = 'INIT'
-            obj.updated_by = obj.created_by
+            if not obj.pk:
+                obj.created_by = 'INIT'
+                obj.updated_by = obj.created_by
         super().save_model(request, obj, form, change)

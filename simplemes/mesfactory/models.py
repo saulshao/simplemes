@@ -19,6 +19,32 @@ class Factory(FactoryCommon):
         verbose_name_plural = "Factories"
 
 
+class FactoryAttr(RowTracking):
+    FACTORY_ATTRIBUTES = [
+        ('PLANT_CODE', 'Plant code(2 digits)'),
+        ('NATION', 'Nation'),
+        ('MANAGER', 'Manager''s Name'),
+        ('PHONE_NUMBER', 'Contact Phone Number'),
+    ]
+
+    factory = models.ForeignKey(
+        'Factory',
+        on_delete=models.CASCADE    # ,
+        # db_constraint=False
+    )
+    attr_name = models.CharField(
+        max_length=100,
+        choices=FACTORY_ATTRIBUTES
+    )
+    attr_value = models.CharField(
+        max_length=100
+    )
+
+    class Meta:
+        db_table = 'factory_attr'
+        verbose_name_plural = "Extended attributes"
+
+
 class Workshop(FactoryCommon):
     factory = models.ForeignKey(
         'Factory',
@@ -28,6 +54,30 @@ class Workshop(FactoryCommon):
 
     class Meta:
         db_table = 'workshop'
+
+
+class WorkshopAttr(RowTracking):
+    WORKSHOP_ATTRIBUTES = [
+        ('MANAGER', 'Manager''s Name'),
+        ('PHONE_NUMBER', 'Contact Phone Number'),
+    ]
+
+    workshop = models.ForeignKey(
+        'Workshop',
+        on_delete=models.CASCADE    # ,
+        # db_constraint=False
+    )
+    attr_name = models.CharField(
+        max_length=100,
+        choices=WORKSHOP_ATTRIBUTES
+    )
+    attr_value = models.CharField(
+        max_length=100
+    )
+
+    class Meta:
+        db_table = 'workshop_attr'
+        verbose_name_plural = "Extended attributes"
 
 
 class Line(FactoryCommon):
@@ -41,6 +91,30 @@ class Line(FactoryCommon):
         db_table = 'line'
 
 
+class LineAttr(RowTracking):
+    LINE_ATTRIBUTES = [
+        ('LEADER', 'Leader''s Name'),
+        ('PHONE_NUMBER', 'Contact Phone Number'),
+    ]
+
+    line = models.ForeignKey(
+        'Line',
+        on_delete=models.CASCADE    # ,
+        # db_constraint=False
+    )
+    attr_name = models.CharField(
+        max_length=100,
+        choices=LINE_ATTRIBUTES
+    )
+    attr_value = models.CharField(
+        max_length=100
+    )
+
+    class Meta:
+        db_table = 'line_attr'
+        verbose_name_plural = "Extended attributes"
+
+
 class Station(FactoryCommon):
     line = models.ForeignKey(
         'Line',
@@ -50,3 +124,28 @@ class Station(FactoryCommon):
 
     class Meta:
         db_table = 'station'
+
+
+class StationAttr(RowTracking):
+    STATION_ATTRIBUTES = [
+        ('DANGEROUS', 'Dangrous(Y/N)'),
+        ('AUTOMATE', 'Automate(Y/N)'),
+        ('ROBOT', 'Robot(Y/N)'),
+    ]
+
+    station = models.ForeignKey(
+        'Station',
+        on_delete=models.CASCADE    # ,
+        # db_constraint=False
+    )
+    attr_name = models.CharField(
+        max_length=100,
+        choices=STATION_ATTRIBUTES
+    )
+    attr_value = models.CharField(
+        max_length=100
+    )
+
+    class Meta:
+        db_table = 'station_attr'
+        verbose_name_plural = "Extended attributes"

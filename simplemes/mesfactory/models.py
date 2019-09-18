@@ -6,7 +6,8 @@ from simplemes.publicmodels import CommonField, RowTracking
 class FactoryCommon(CommonField, RowTracking):
     location = models.TextField(
         max_length=100,
-        default='TBD'
+        default='TBD',
+        help_text='Position of the location, e.g. coordinates'
     )
 
     class Meta:

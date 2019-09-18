@@ -7,7 +7,7 @@ class MesObjAdmin(admin.ModelAdmin):
         Admin view for most entity model
     '''
     # Default columns in query result list
-    list_display = (
+    list_display = [
         'code',
         'name',
         'description',
@@ -15,7 +15,7 @@ class MesObjAdmin(admin.ModelAdmin):
         'created_on',
         'updated_by',
         'updated_on'
-        )
+    ]
 
     # assign values for update record automatically according the current user
     def save_model(self, request, obj, form, change):

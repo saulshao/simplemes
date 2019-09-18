@@ -14,7 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import url, include
 from django.urls import path
+from rest_framework import routers
+
+
+# Routers provide an easy way of automatically determining the URL conf.
 
 admin.site.site_header = "Simplemes Admin"
 admin.site.site_title = "Simplemes Admin Portal"
@@ -23,4 +28,10 @@ admin.site.index_title = "Welcome to Simplemes Researcher Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(
+        r'^api-auth/',
+        include(
+            'rest_framework.urls', namespace='rest_framework')
+    ),
+    url(r'^mesuser/', include('mesuser.urls')),
 ]

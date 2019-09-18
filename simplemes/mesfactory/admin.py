@@ -26,7 +26,14 @@ class WorkshopAttrInline(admin.TabularInline):
 
 
 class WorkshopAdmin(MesObjAdmin):
+    # list_display = MesObjAdmin.list_display.insert(2, 'get_factory_code')
+    # list_display_links = ('get_factory_code', )
     inlines = [WorkshopAttrInline, LineInline]
+
+    # def get_factory_code(self, obj):
+    #   return self.factory
+    # get_factory_code.admin_order_field = 'factory'
+    # get_factory_code.short_description = 'Factory'
 
 
 class StationInline(admin.TabularInline):

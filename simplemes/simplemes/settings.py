@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'simplemesdb',
         'USER': 'simplemes',
         'PASSWORD': 'v@V5FzFJ9DR4@6v',
-        'HOST': '192.168.1.2',
-        'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': '32768',
     },
     'backup': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -114,8 +114,10 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 50
 }
 
 

@@ -46,3 +46,30 @@ class RowTracking(models.Model):
 
     class Meta:
         abstract = True
+
+
+class VolumeField(models.Model):
+    '''
+        Three columns of the volume
+    '''
+    length = models.DecimalField(
+        default=0,
+        decimal_places=9,
+        max_digits=30,
+        help_text='Length of the object'
+    )
+    width = models.DecimalField(
+        default=0,
+        decimal_places=9,
+        max_digits=30,
+        help_text='Width of the object'
+    )
+    height = models.DecimalField(
+        default=0,
+        decimal_places=9,
+        max_digits=30,
+        help_text='Height of the object'
+    )
+
+    class Meta:
+        abstract = True

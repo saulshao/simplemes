@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'simplemes',
     'mesfactory.apps.MesfactoryConfig',
+    'product.apps.ProductConfig',
     'rest_framework',
 ]
 
@@ -82,7 +83,7 @@ DATABASES = {
         'USER': 'simplemes',
         'PASSWORD': 'v@V5FzFJ9DR4@6v',
         'HOST': 'localhost',
-        'PORT': '32768',
+        'PORT': '5432',
     },
     'backup': {
         'ENGINE': 'django.db.backends.sqlite3',

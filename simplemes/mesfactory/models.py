@@ -35,7 +35,7 @@ class FactoryAttr(RowTracking):
     )
     attr_name = models.CharField(
         max_length=100,
-        choices=FACTORY_ATTRIBUTES
+        choices=FACTORY_ATTRIBUTES,
     )
     attr_value = models.CharField(
         max_length=100
@@ -44,6 +44,9 @@ class FactoryAttr(RowTracking):
     class Meta:
         db_table = 'factory_attr'
         verbose_name_plural = "Extended attributes"
+        constraints = [
+            models.UniqueConstraint(fields=['factory', 'attr_name'], name='uniq_factory_attr')
+        ]
 
 
 class Workshop(FactoryCommon):
@@ -79,6 +82,9 @@ class WorkshopAttr(RowTracking):
     class Meta:
         db_table = 'workshop_attr'
         verbose_name_plural = "Extended attributes"
+        constraints = [
+            models.UniqueConstraint(fields=['workshop', 'attr_name'], name='uniq_workshop_attr')
+        ]
 
 
 class Line(FactoryCommon):
@@ -114,6 +120,9 @@ class LineAttr(RowTracking):
     class Meta:
         db_table = 'line_attr'
         verbose_name_plural = "Extended attributes"
+        constraints = [
+            models.UniqueConstraint(fields=['line', 'attr_name'], name='uniq_line_attr')
+        ]
 
 
 class Station(FactoryCommon):
@@ -150,3 +159,6 @@ class StationAttr(RowTracking):
     class Meta:
         db_table = 'station_attr'
         verbose_name_plural = "Extended attributes"
+        constraints = [
+            models.UniqueConstraint(fields=['station', 'attr_name'], name='uniq_station_attr')
+        ]

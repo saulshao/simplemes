@@ -33,7 +33,7 @@ class MaterialCategoryAttr(RowTracking):
 
     class Meta:
         db_table = 'material_category_attr'
-        verbose_name_plural = "Extended attributes"
+        verbose_name_plural = 'Extended attributes'
         constraints = [
             models.UniqueConstraint(fields=['material_category', 'attr_name'], name='uniq_material_category_attr')
         ]
@@ -56,6 +56,7 @@ class Material(CommonField, RowTracking, VolumeField):
         ('NORMAL', 'Normal'),
         ('PRODUCT', 'Product'),
         ('FIXTURE', 'Fixture'),
+        ('EQUIPMENT', 'Equipment'),
     ]
 
     unit = models.SmallIntegerField(
@@ -91,6 +92,9 @@ class Material(CommonField, RowTracking, VolumeField):
         help_text='Status',
     )
 
+    def __str__(self):
+        return self.code
+
     class Meta:
         db_table = 'material'
         verbose_name_plural = "Material master"
@@ -119,7 +123,43 @@ class MaterialAttr(RowTracking):
 
     class Meta:
         db_table = 'material_attr'
-        verbose_name_plural = "Extended attributes"
+        verbose_name_plural = 'Extended attributes'
         constraints = [
             models.UniqueConstraint(fields=['material', 'attr_name'], name='uniq_material_attr')
         ]
+
+
+class Product(RowTracking):
+    material = models.OneToOneField(
+        Material,
+        on_delete=models.PROTECT,
+        primary_key=True,
+        # db_constraint=False
+    )
+
+    def __str__(self):
+        return "%s the product" % self.material.code
+
+    class Meta:
+        db_table = 'product'
+        verbose_name = 'Product from special material'
+
+
+class ProductBOM():
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.PROTECT,
+    )
+    revision = models.CharField(
+        max_length=20,
+        default='0',
+        help_text='Revision number',
+    )
+    status = models.SmallIntegerField(
+        choices=MAINTENANCE_STATUS,
+        default=100,
+        help_text='Status,very important for maintenance',
+    )
+
+    def __str__(self):
+        return "BOM of %s" % self.product.material.code

@@ -34,4 +34,6 @@ urlpatterns = [
             'rest_framework.urls', namespace='rest_framework')
     ),
     url(r'^mesuser/', include('mesuser.urls')),
+    url(r'^product/', include('product.urls')),
+    url(r'^factory/', include('mesfactory.urls')),
 ]

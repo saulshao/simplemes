@@ -5,6 +5,10 @@ from simplemes.enums import MAINTENANCE_STATUS
 
 # Create your models here.
 class MaterialCategory(CommonField, RowTracking):
+
+    def __str__(self):
+        return self.code
+
     class Meta:
         db_table = 'material_category'
         verbose_name_plural = "Material category"
@@ -31,12 +35,35 @@ class MaterialCategoryAttr(RowTracking):
         max_length=100
     )
 
+    def __str__(self):
+        return self.attr_name
+
     class Meta:
         db_table = 'material_category_attr'
         verbose_name_plural = 'Extended attributes'
         constraints = [
             models.UniqueConstraint(fields=['material_category', 'attr_name'], name='uniq_material_category_attr')
         ]
+
+
+class BomTemplate(CommonField, RowTracking):
+    revision = models.CharField(
+        max_length=20,
+        default='0',
+        help_text='Revision number of the BOM',
+    )
+    status = models.SmallIntegerField(
+        choices=MAINTENANCE_STATUS,
+        default=100,
+        help_text='Status,very important for maintenance',
+    )
+
+    def __str__(self):
+        return self.code
+
+    class Meta:
+        db_table = 'bom_template'
+        verbose_name_plural = 'BOM template'
 
 
 # Create your models here.
@@ -91,13 +118,21 @@ class Material(CommonField, RowTracking, VolumeField):
         default=100,
         help_text='Status',
     )
+    bom_template = models.ForeignKey(
+        BomTemplate,
+        on_delete=models.PROTECT,
+        default=-1,
+        to_field='code',
+        db_constraint=False,
+        help_text='Link to BOM template',
+    )
 
     def __str__(self):
         return self.code
 
     class Meta:
         db_table = 'material'
-        verbose_name_plural = "Material master"
+        verbose_name_plural = "Materials"
 
 
 class MaterialAttr(RowTracking):
@@ -121,6 +156,9 @@ class MaterialAttr(RowTracking):
         max_length=100
     )
 
+    def __str__(self):
+        return self.attr_name
+
     class Meta:
         db_table = 'material_attr'
         verbose_name_plural = 'Extended attributes'
@@ -138,14 +176,14 @@ class Product(RowTracking):
     )
 
     def __str__(self):
-        return "%s the product" % self.material.code
+        return self.material.code
 
     class Meta:
         db_table = 'product'
-        verbose_name = 'Product from special material'
+        verbose_name_plural = 'Products'
 
-
-class ProductBOM():
+'''
+class ProductBOM(RowTracking):
     product = models.ForeignKey(
         'Product',
         on_delete=models.PROTECT,
@@ -163,3 +201,36 @@ class ProductBOM():
 
     def __str__(self):
         return "BOM of %s" % self.product.material.code
+
+    class Meta:
+        db_table = 'product_bom'
+        verbose_name_plural = 'product BOM'
+'''
+
+
+class BomTemplateLine(RowTracking):
+    bom_template = models.ForeignKey(
+        'BomTemplate',
+        on_delete=models.CASCADE,
+        help_text='Please select existed bom template',
+    )
+    material = models.ForeignKey(
+        'Material',
+        on_delete=models.CASCADE,
+        help_text='Please select existed material',
+    )
+    quantity = models.DecimalField(
+        max_digits=20,
+        decimal_places=6,
+        default=1,
+    )
+
+    def __str__(self):
+        return self.code
+
+    class Meta:
+        db_table = 'bom_template_line'
+        verbose_name_plural = 'BOM template line'
+        constraints = [
+            models.UniqueConstraint(fields=['bom_template', 'material'], name='uniq_bom_template_line')
+        ]

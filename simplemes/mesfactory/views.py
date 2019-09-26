@@ -7,12 +7,12 @@ from django.shortcuts import render
 from .models import Factory, Workshop, Line, Station
 from .models import FactoryAttr, WorkshopAttr, LineAttr, StationAttr
 from rest_framework import viewsets
-from .serializers import MaterialSerializer, ProductSerializer
+from .serializers import FactorySerializer
 
 
 class FactoryViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows factories to be viewed or edited.
     """
     queryset = Factory.objects.all().order_by('-updated_on')
     serializer_class = FactorySerializer

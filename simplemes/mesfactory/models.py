@@ -41,6 +41,9 @@ class FactoryAttr(RowTracking):
         max_length=100
     )
 
+    def __str__(self):
+        return self.attr_name
+
     class Meta:
         db_table = 'factory_attr'
         verbose_name_plural = "Extended attributes"
@@ -55,6 +58,9 @@ class Workshop(FactoryCommon):
         on_delete=models.PROTECT    # ,
         # db_constraint=False
     )
+
+    def __str__(self):
+        return self.code
 
     class Meta:
         db_table = 'workshop'
@@ -94,6 +100,9 @@ class Line(FactoryCommon):
         # db_constraint=False
     )
 
+    def __str__(self):
+        return self.code
+
     class Meta:
         db_table = 'line'
 
@@ -131,6 +140,9 @@ class Station(FactoryCommon):
         on_delete=models.PROTECT    # ,
         # db_constraint=False
     )
+
+    def __str__(self):
+        return self.code
 
     class Meta:
         db_table = 'station'

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Material, Product, ProductBOM
+from .models import Material, Product
 
 
 class MaterialSerializer(serializers.HyperlinkedModelSerializer):

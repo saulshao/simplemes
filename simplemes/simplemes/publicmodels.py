@@ -56,19 +56,19 @@ class VolumeField(models.Model):
         default=0,
         decimal_places=9,
         max_digits=30,
-        help_text='Length of the object'
+        help_text='Length of the object(mm) '
     )
     width = models.DecimalField(
         default=0,
         decimal_places=9,
         max_digits=30,
-        help_text='Width of the object'
+        help_text='Width of the object(mm)'
     )
     height = models.DecimalField(
         default=0,
         decimal_places=9,
         max_digits=30,
-        help_text='Height of the object'
+        help_text='Height of the object(mm)'
     )
 
     class Meta:

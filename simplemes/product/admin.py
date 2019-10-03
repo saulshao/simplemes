@@ -19,10 +19,22 @@ class BomTemplateLineInline(admin.TabularInline):
 
 
 class BomTemplateAdmin(MesObjAdmin):
-    model = BomTemplateLine
+    model = BomTemplate
 
     inlines = [BomTemplateLineInline]
 
 
+class MaterialCategoryInline(admin.TabularInline):
+    model = MaterialCategoryAttr
+
+
+class MaterialCategoryAdmin(MesObjAdmin):
+    model = MaterialCategory
+
+    inlines = [MaterialCategoryInline]
+
+
+admin.site.register(MaterialCategory, MaterialCategoryAdmin)
 admin.site.register(Material, MaterialAdmin)
+admin.site.register(BomTemplate, BomTemplateAdmin)
 admin.site.register(Product)

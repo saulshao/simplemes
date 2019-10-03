@@ -29,8 +29,9 @@ class FactoryAttr(RowTracking):
     ]
 
     factory = models.ForeignKey(
-        'Factory',
-        on_delete=models.CASCADE    # ,
+        Factory,
+        on_delete=models.CASCADE,
+        related_name='attributes'    # ,
         # db_constraint=False
     )
     attr_name = models.CharField(
@@ -54,8 +55,9 @@ class FactoryAttr(RowTracking):
 
 class Workshop(FactoryCommon):
     factory = models.ForeignKey(
-        'Factory',
-        on_delete=models.PROTECT    # ,
+        Factory,
+        on_delete=models.PROTECT,
+        related_name='workshops'
         # db_constraint=False
     )
 
@@ -73,8 +75,9 @@ class WorkshopAttr(RowTracking):
     ]
 
     workshop = models.ForeignKey(
-        'Workshop',
-        on_delete=models.CASCADE    # ,
+        Workshop,
+        on_delete=models.CASCADE,
+        related_name='attributes',    # ,
         # db_constraint=False
     )
     attr_name = models.CharField(
@@ -95,8 +98,9 @@ class WorkshopAttr(RowTracking):
 
 class Line(FactoryCommon):
     workshop = models.ForeignKey(
-        'Workshop',
-        on_delete=models.PROTECT    # ,
+        Workshop,
+        on_delete=models.PROTECT,
+        related_name='lines',
         # db_constraint=False
     )
 
@@ -114,8 +118,9 @@ class LineAttr(RowTracking):
     ]
 
     line = models.ForeignKey(
-        'Line',
-        on_delete=models.CASCADE    # ,
+        Line,
+        on_delete=models.CASCADE,
+        related_name='attributes',
         # db_constraint=False
     )
     attr_name = models.CharField(
@@ -136,8 +141,9 @@ class LineAttr(RowTracking):
 
 class Station(FactoryCommon):
     line = models.ForeignKey(
-        'Line',
-        on_delete=models.PROTECT    # ,
+        Line,
+        on_delete=models.PROTECT,
+        related_name='stations',
         # db_constraint=False
     )
 
@@ -156,8 +162,9 @@ class StationAttr(RowTracking):
     ]
 
     station = models.ForeignKey(
-        'Station',
-        on_delete=models.CASCADE    # ,
+        Station,
+        on_delete=models.CASCADE,
+        related_name='attributes',
         # db_constraint=False
     )
     attr_name = models.CharField(

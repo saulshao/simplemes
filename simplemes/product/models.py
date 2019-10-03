@@ -16,10 +16,10 @@ class MaterialCategory(CommonField, RowTracking):
 
 class MaterialCategoryAttr(RowTracking):
     MATERIAL_CATEGORY_ATTRIBUTES = [
-        ('PLANT_CODE', 'Plant code(2 digits)'),
-        ('NATION', 'Nation'),
-        ('MANAGER', 'Manager''s Name'),
-        ('PHONE_NUMBER', 'Contact Phone Number'),
+        ('SN_PREFIX', 'Serial Number Prefix'),
+        ('Attr2', 'Attr2'),
+        ('Attr3', 'Attr3'),
+        ('Attr4', 'Attr4'),
     ]
 
     material_category = models.ForeignKey(
@@ -86,6 +86,12 @@ class Material(CommonField, RowTracking, VolumeField):
         ('EQUIPMENT', 'Equipment'),
     ]
 
+    material_category = models.ForeignKey(
+        MaterialCategory,
+        on_delete=models.PROTECT,
+        default=1,
+        help_text='Link to material category',
+    )
     unit = models.SmallIntegerField(
         choices=MATERIAL_UNIT,
         default=1,
@@ -122,13 +128,12 @@ class Material(CommonField, RowTracking, VolumeField):
         BomTemplate,
         on_delete=models.PROTECT,
         default=-1,
-        to_field='code',
         db_constraint=False,
         help_text='Link to BOM template',
     )
 
     def __str__(self):
-        return self.code
+        return "%s-%s" % (self.code, self.name)
 
     class Meta:
         db_table = 'material'

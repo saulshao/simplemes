@@ -1,0 +1,486 @@
+[
+    {
+        "model": "mesfactory.factory",
+        "pk": 1,
+        "fields": {
+            "code": "1ST_STARSHIP_FACTORY",
+            "name": "\u7b2c\u4e00\u661f\u8230\u5de5\u5382",
+            "description": "\u7b2c\u4e00\u4e2a\u661f\u9645\u6218\u8230\u751f\u4ea7\u5de5\u5382\uff0c\u4f4d\u4e8e\u5730\u7403",
+            "created_by": "admin",
+            "created_on": "2019-09-23T19:33:58.642Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:55:11.444Z",
+            "location": "Earth orbital"
+        }
+    },
+    {
+        "model": "mesfactory.factoryattr",
+        "pk": 1,
+        "fields": {
+            "created_by": "admin",
+            "created_on": "2019-09-23T19:33:58.646Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-23T19:33:58.646Z",
+            "factory": 1,
+            "attr_name": "PLANT_CODE",
+            "attr_value": "EA"
+        }
+    },
+    {
+        "model": "mesfactory.factoryattr",
+        "pk": 2,
+        "fields": {
+            "created_by": "admin",
+            "created_on": "2019-09-23T19:33:58.648Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-23T19:33:58.648Z",
+            "factory": 1,
+            "attr_name": "NATION",
+            "attr_value": "USA"
+        }
+    },
+    {
+        "model": "mesfactory.factoryattr",
+        "pk": 3,
+        "fields": {
+            "created_by": "admin",
+            "created_on": "2019-09-23T19:33:58.649Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-23T19:33:58.649Z",
+            "factory": 1,
+            "attr_name": "MANAGER",
+            "attr_value": "Terran Shao"
+        }
+    },
+    {
+        "model": "mesfactory.workshop",
+        "pk": 1,
+        "fields": {
+            "code": "1ST_WORKSHOP",
+            "name": "\u7b2c\u4e00\u8f66\u95f4",
+            "description": "\u7b2c\u4e00\u661f\u8230\u751f\u4ea7\u8f66\u95f4",
+            "created_by": "admin",
+            "created_on": "2019-09-23T19:33:58.650Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:45:52.322Z",
+            "location": "Earth orbital 1st level",
+            "factory": 1
+        }
+    },
+    {
+        "model": "mesfactory.workshop",
+        "pk": 2,
+        "fields": {
+            "code": "2ND_WORKSHOP",
+            "name": "\u7b2c\u4e8c\u8f66\u95f4",
+            "description": "\u7b2c\u4e8c\u661f\u8230\u751f\u4ea7\u8f66\u95f4",
+            "created_by": "admin",
+            "created_on": "2019-09-23T19:33:58.652Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:56:35.335Z",
+            "location": "Earth orbital 2nd level",
+            "factory": 1
+        }
+    },
+    {
+        "model": "mesfactory.workshop",
+        "pk": 3,
+        "fields": {
+            "code": "3RD_WORKSHOP",
+            "name": "\u7b2c\u4e09\u8f66\u95f4",
+            "description": "\u7b2c\u4e09\u661f\u8230\u751f\u4ea7\u8f66\u95f4",
+            "created_by": "admin",
+            "created_on": "2019-09-23T19:33:58.653Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:57:46.864Z",
+            "location": "Earth orbital 3rd level",
+            "factory": 1
+        }
+    },
+    {
+        "model": "mesfactory.workshopattr",
+        "pk": 1,
+        "fields": {
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:45:52.335Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:45:52.335Z",
+            "workshop": 1,
+            "attr_name": "MANAGER",
+            "attr_value": "Sheppard"
+        }
+    },
+    {
+        "model": "mesfactory.workshopattr",
+        "pk": 2,
+        "fields": {
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:45:52.359Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:45:52.359Z",
+            "workshop": 1,
+            "attr_name": "PHONE_NUMBER",
+            "attr_value": "87653213"
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 1,
+        "fields": {
+            "code": "1ST_LINE",
+            "name": "1ST_LINE",
+            "description": "\u4e00\u8f66\u95f4\uff0c\u7b2c\u4e00\u6761\u751f\u4ea7\u7ebf",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:45:52.360Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:00:09.774Z",
+            "location": "Earth orbital 1st level",
+            "workshop": 1
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 2,
+        "fields": {
+            "code": "2ND_LINE",
+            "name": "2ND_LINE",
+            "description": "\u4e00\u8f66\u95f4\uff0c\u7b2c\u4e8c\u6761\u751f\u4ea7\u7ebf",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:45:52.366Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:01:12.891Z",
+            "location": "Earth orbital 1st level",
+            "workshop": 1
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 3,
+        "fields": {
+            "code": "3RD_LINE",
+            "name": "3RD_LINE",
+            "description": "\u4e00\u8f66\u95f4\uff0c\u7b2c\u4e09\u6761\u751f\u4ea7\u7ebf",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:45:52.370Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:04:20.369Z",
+            "location": "Earth orbital 1st level",
+            "workshop": 1
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 4,
+        "fields": {
+            "code": "4TH_LINE",
+            "name": "4TH_LINE",
+            "description": "\u7b2c\u56db\u6761\u4ea7\u7ebf",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:56:35.338Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:05:05.969Z",
+            "location": "Earth orbital 2nd level",
+            "workshop": 2
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 5,
+        "fields": {
+            "code": "5TH_LINE",
+            "name": "5TH_LINE",
+            "description": "\u7b2c\u4e94\u6761\u4ea7\u7ebf",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:56:35.339Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:05:46.818Z",
+            "location": "Earth orbital 2nd level",
+            "workshop": 2
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 6,
+        "fields": {
+            "code": "6TH_LINE",
+            "name": "6TH_LINE",
+            "description": "\u7b2c\u516d\u6761\u4ea7\u7ebf",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:56:35.340Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:56:35.340Z",
+            "location": "Earth orbital 2nd level",
+            "workshop": 2
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 7,
+        "fields": {
+            "code": "LINE_3_01",
+            "name": "LINE_3_01",
+            "description": "LINE_3_01",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:57:46.865Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:57:46.865Z",
+            "location": "Earth orbital 3rd level",
+            "workshop": 3
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 8,
+        "fields": {
+            "code": "LINE_3_02",
+            "name": "LINE_3_02",
+            "description": "LINE_3_02",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:57:46.866Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:57:46.866Z",
+            "location": "Earth orbital 3rd level",
+            "workshop": 3
+        }
+    },
+    {
+        "model": "mesfactory.line",
+        "pk": 9,
+        "fields": {
+            "code": "LINE_3_03",
+            "name": "LINE_3_03",
+            "description": "LINE_3_03",
+            "created_by": "admin",
+            "created_on": "2019-09-24T20:57:46.867Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T20:57:46.867Z",
+            "location": "Earth orbital 3rd level",
+            "workshop": 3
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 1,
+        "fields": {
+            "code": "S_01_001_001",
+            "name": "S_01_001_001",
+            "description": "S_01_001_001",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:00:09.775Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:00:09.775Z",
+            "location": "Earth orbital 1st level",
+            "line": 1
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 2,
+        "fields": {
+            "code": "S_01_001_002",
+            "name": "S_01_001_002",
+            "description": "S_01_001_002",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:00:09.829Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:00:09.829Z",
+            "location": "Earth orbital 1st level",
+            "line": 1
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 3,
+        "fields": {
+            "code": "S_01_001_003",
+            "name": "S_01_001_003",
+            "description": "S_01_001_003",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:00:09.831Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:00:09.831Z",
+            "location": "Earth orbital 1st level",
+            "line": 1
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 4,
+        "fields": {
+            "code": "S_01_002_001",
+            "name": "S_01_002_001",
+            "description": "S_01_002_001",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:01:12.893Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:01:12.893Z",
+            "location": "TBD",
+            "line": 2
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 5,
+        "fields": {
+            "code": "S_01_002_002",
+            "name": "S_01_002_002",
+            "description": "S_01_002_002",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:01:12.894Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:01:12.894Z",
+            "location": "TBD",
+            "line": 2
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 6,
+        "fields": {
+            "code": "S_01_002_003",
+            "name": "S_01_002_003",
+            "description": "S_01_002_003",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:01:12.895Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:01:12.895Z",
+            "location": "TBD",
+            "line": 2
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 7,
+        "fields": {
+            "code": "S_01_003_001",
+            "name": "S_01_003_001",
+            "description": "S_01_003_001",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:04:20.371Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:04:20.371Z",
+            "location": "TBD",
+            "line": 3
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 8,
+        "fields": {
+            "code": "S_01_003_002",
+            "name": "S_01_003_002",
+            "description": "S_01_003_002",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:04:20.372Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:04:20.372Z",
+            "location": "TBD",
+            "line": 3
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 9,
+        "fields": {
+            "code": "S_01_003_003",
+            "name": "S_01_003_003",
+            "description": "S_01_003_003",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:04:20.373Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:04:20.373Z",
+            "location": "TBD",
+            "line": 3
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 10,
+        "fields": {
+            "code": "S_01_004_001",
+            "name": "S_01_004_001",
+            "description": "S_01_004_001",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:05:05.970Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:05:05.970Z",
+            "location": "TBD",
+            "line": 4
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 11,
+        "fields": {
+            "code": "S_01_004_002",
+            "name": "S_01_004_002",
+            "description": "S_01_004_002",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:05:05.971Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:05:05.971Z",
+            "location": "TBD",
+            "line": 4
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 12,
+        "fields": {
+            "code": "S_01_004_003",
+            "name": "S_01_004_003",
+            "description": "S_01_004_003",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:05:05.972Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:05:05.972Z",
+            "location": "TBD",
+            "line": 4
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 13,
+        "fields": {
+            "code": "S_01_005_001",
+            "name": "S_01_005_001",
+            "description": "S_01_005_001",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:05:46.821Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:05:46.821Z",
+            "location": "TBD",
+            "line": 5
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 14,
+        "fields": {
+            "code": "S_01_005_002",
+            "name": "S_01_005_002",
+            "description": "S_01_005_002",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:05:46.822Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:05:46.822Z",
+            "location": "TBD",
+            "line": 5
+        }
+    },
+    {
+        "model": "mesfactory.station",
+        "pk": 15,
+        "fields": {
+            "code": "S_01_005_003",
+            "name": "S_01_005_003",
+            "description": "S_01_005_003",
+            "created_by": "admin",
+            "created_on": "2019-09-24T21:05:46.823Z",
+            "updated_by": "admin",
+            "updated_on": "2019-09-24T21:05:46.823Z",
+            "location": "TBD",
+            "line": 5
+        }
+    }
+]

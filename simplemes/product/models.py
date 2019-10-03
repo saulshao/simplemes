@@ -23,8 +23,9 @@ class MaterialCategoryAttr(RowTracking):
     ]
 
     material_category = models.ForeignKey(
-        'MaterialCategory',
-        on_delete=models.CASCADE    # ,
+        MaterialCategory,
+        on_delete=models.CASCADE,
+        related_name='attributes',
         # db_constraint=False
     )
     attr_name = models.CharField(
@@ -66,7 +67,6 @@ class BomTemplate(CommonField, RowTracking):
         verbose_name_plural = 'BOM template'
 
 
-# Create your models here.
 class Material(CommonField, RowTracking, VolumeField):
     MATERIAL_UNIT = [
         (1, 'pcs'),
@@ -80,7 +80,7 @@ class Material(CommonField, RowTracking, VolumeField):
         (40, 'cubic meter'),
     ]
     MATERIAL_TYPE = [
-        ('NORMAL', 'Normal'),
+        ('NORMAL', 'Normal, raw material'),
         ('PRODUCT', 'Product'),
         ('FIXTURE', 'Fixture'),
         ('EQUIPMENT', 'Equipment'),
@@ -89,6 +89,7 @@ class Material(CommonField, RowTracking, VolumeField):
     material_category = models.ForeignKey(
         MaterialCategory,
         on_delete=models.PROTECT,
+        related_name='material_list',
         default=1,
         help_text='Link to material category',
     )
@@ -142,15 +143,16 @@ class Material(CommonField, RowTracking, VolumeField):
 
 class MaterialAttr(RowTracking):
     MATERIAL_ATTRIBUTES = [
-        ('PLANT_CODE', 'Plant code(2 digits)'),
+        ('SN_PREFIX', 'Serial Number Prefix'),
         ('NATION', 'Nation'),
         ('MANAGER', 'Manager''s Name'),
         ('PHONE_NUMBER', 'Contact Phone Number'),
     ]
 
     material = models.ForeignKey(
-        'Material',
-        on_delete=models.CASCADE    # ,
+        Material,
+        on_delete=models.CASCADE,
+        related_name='attributes',
         # db_constraint=False
     )
     attr_name = models.CharField(
@@ -176,6 +178,7 @@ class Product(RowTracking):
     material = models.OneToOneField(
         Material,
         on_delete=models.PROTECT,
+        related_name='master',
         primary_key=True,
         # db_constraint=False
     )
@@ -187,41 +190,18 @@ class Product(RowTracking):
         db_table = 'product'
         verbose_name_plural = 'Products'
 
-'''
-class ProductBOM(RowTracking):
-    product = models.ForeignKey(
-        'Product',
-        on_delete=models.PROTECT,
-    )
-    revision = models.CharField(
-        max_length=20,
-        default='0',
-        help_text='Revision number',
-    )
-    status = models.SmallIntegerField(
-        choices=MAINTENANCE_STATUS,
-        default=100,
-        help_text='Status,very important for maintenance',
-    )
-
-    def __str__(self):
-        return "BOM of %s" % self.product.material.code
-
-    class Meta:
-        db_table = 'product_bom'
-        verbose_name_plural = 'product BOM'
-'''
-
 
 class BomTemplateLine(RowTracking):
     bom_template = models.ForeignKey(
-        'BomTemplate',
+        BomTemplate,
         on_delete=models.CASCADE,
+        related_name='bom_lines',
         help_text='Please select existed bom template',
     )
     material = models.ForeignKey(
-        'Material',
+        Material,
         on_delete=models.CASCADE,
+        related_name='bom_item',
         help_text='Please select existed material',
     )
     quantity = models.DecimalField(

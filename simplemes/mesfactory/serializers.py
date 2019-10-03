@@ -12,7 +12,7 @@ class StationAttrSerializer(serializers.ModelSerializer):
 
 
 class StationSerializer(serializers.HyperlinkedModelSerializer):
-    attributes = StationAttrSerializer(many=True, read_only=True)
+    attributes = StationAttrSerializer(many=True)
 
     class Meta:
         model = Station
@@ -26,7 +26,7 @@ class LineAttrSerializer(serializers.ModelSerializer):
 
 
 class LineSerializer(serializers.HyperlinkedModelSerializer):
-    attributes = LineAttrSerializer(many=True, read_only=True)
+    attributes = LineAttrSerializer(many=True)
     stations = StationSerializer(many=True, read_only=True)
 
     class Meta:
@@ -41,7 +41,7 @@ class WorkshopAttrSerializer(serializers.ModelSerializer):
 
 
 class WorkshopSerializer(serializers.HyperlinkedModelSerializer):
-    attributes = WorkshopAttrSerializer(many=True, read_only=True)
+    attributes = WorkshopAttrSerializer(many=True)
     lines = LineSerializer(many=True, read_only=True)
 
     class Meta:
@@ -56,7 +56,7 @@ class FactoryAttrSerializer(serializers.ModelSerializer):
 
 
 class FactorySerializer(serializers.HyperlinkedModelSerializer):
-    attributes = FactoryAttrSerializer(many=True, read_only=True)
+    attributes = FactoryAttrSerializer(many=True)
     workshops = WorkshopSerializer(many=True, read_only=True)
 
     class Meta:

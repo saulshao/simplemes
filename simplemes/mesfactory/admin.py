@@ -1,8 +1,15 @@
 from django.contrib import admin
 from simplemes.publicadmin import MesObjAdmin
-from .models import Factory, Workshop, Line, Station
+from .models import Factory, Workshop, Line, Station, Location
 from .models import FactoryAttr, WorkshopAttr, LineAttr, StationAttr
 # Register your models here.
+
+
+class LocationInline(admin.TabularInline):
+    model = Location
+
+class LocationAdmin(MesObjAdmin):
+    pass
 
 
 class WorkshopInline(admin.TabularInline):
@@ -54,8 +61,14 @@ class StationAttrInline(admin.TabularInline):
 
 class StationAdmin(MesObjAdmin):
     inlines = [StationAttrInline]
+    
+admin.site.register(Location, LocationAdmin)
 
 admin.site.register(Factory, FactoryAdmin)
 admin.site.register(Workshop, WorkshopAdmin)
 admin.site.register(Line, LineAdmin)
 admin.site.register(Station, StationAdmin)
+
+admin.site.site_header = "Experimental MES Admin"
+admin.site.site_title = "Experimental MES Admin Portal"
+admin.site.index_title = "Welcome to experimental MES Portal"

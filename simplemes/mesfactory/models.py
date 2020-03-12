@@ -3,11 +3,42 @@ from simplemes.publicmodels import CommonField, RowTracking
 
 
 # Create your models here.
-class FactoryCommon(CommonField, RowTracking):
-    location = models.TextField(
+class Location(CommonField, RowTracking):
+    country_code = models.CharField(
+        max_length=2,
+        default='NA'
+    )
+    province = models.CharField(
         max_length=100,
-        default='TBD',
-        help_text='Position of the location, e.g. coordinates'
+        default = 'Unknown'
+    )
+    city = models.CharField(
+        max_length=200,
+        default='Unknown'
+    )
+    street = models.CharField(
+        max_length=100,
+        default='Unkown'
+    )
+    house_number = models.CharField(
+        max_length=100,
+        default='Unkown'
+    )
+    floor = models.CharField(
+        max_length=100,
+        default='Unknown'
+    )
+    
+    def __str__(self):
+        return self.code
+
+    class Meta:
+        db_table = 'location'
+
+class FactoryCommon(CommonField, RowTracking):
+    location = models.ForeignKey(
+        Location,
+        on_delete=models.PROTECT
     )
 
     class Meta:
